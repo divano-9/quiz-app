@@ -9,20 +9,27 @@ const GlobalContext = ({ children }) => {
     children: PropTypes.object,
   };
 
-  const [questions, SetQuestions] = useState([]);
+  const [questions, setQuestions] = useState([]);
   const [category, setCategory] = useState("");
   const [amount, setAmount] = useState(10);
   const [difficulty, setDifficulty] = useState("");
 
+  const baseUrl = "https://opentdb.com/api.php?";
+  const url = `${baseUrl}amount=${amount}&category=${category}&difficulty=${difficulty}`;
+
+  const { data, loading, error } = useFetch(url);
+
   const values = {
     questions,
-    SetQuestions,
+    setQuestions,
     category,
     setCategory,
     amount,
     setAmount,
     difficulty,
     setDifficulty,
+    data,
+    url,
   }; // store the values that need to bee passed down to other components
   return <Context.Provider value={values}>{children}</Context.Provider>;
 };
