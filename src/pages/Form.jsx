@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Context } from "../states/GlobalContext";
 import useFetch from "../hooks/useFetch";
+import { Link } from "react-router-dom";
 
 const Form = () => {
   const {
@@ -14,6 +15,7 @@ const Form = () => {
     questions,
     data,
     url,
+    setIndex,
   } = useContext(Context);
 
   return (
@@ -72,15 +74,15 @@ const Form = () => {
             <option value="hard">Hard</option>
           </select>
         </div>
+
         <button
-          type="submit"
           onClick={(e) => {
-            e.preventDefault();
-            setQuestions(data);
+            setQuestions(data.results);
+            setIndex(0);
             console.log(questions);
           }}
         >
-          START!
+          <Link to="quiz">START!</Link>
         </button>
       </form>
       <button
