@@ -14,6 +14,7 @@ const GlobalContext = ({ children }) => {
   const [amount, setAmount] = useState(10);
   const [difficulty, setDifficulty] = useState("");
   const [index, setIndex] = useState(0);
+  const [correct, setCorrect] = useState(0);
 
   const baseUrl = "https://opentdb.com/api.php?";
   const url = `${baseUrl}amount=${amount}&category=${category}&difficulty=${difficulty}`;
@@ -34,6 +35,8 @@ const GlobalContext = ({ children }) => {
     loading,
     setIndex,
     index,
+    correct,
+    setCorrect,
   }; // store the values that need to bee passed down to other components
   return <Context.Provider value={values}>{children}</Context.Provider>;
 };
