@@ -3,72 +3,95 @@ import { Context } from "../states/GlobalContext";
 import { Link } from "react-router-dom";
 import { decode } from "html-entities";
 import randomizeAnswers from "../utils/randomizeAnswers";
+import Modal from "../components/Modal";
 
 const Quiz = () => {
-  const { questions, index, setIndex, loading, correct, setCorrect } =
-    useContext(Context);
+  const {
+    questions,
+    num,
+    setNum,
+    loading,
+    correct,
+    setCorrect,
+    modal,
+    setModal,
+  } = useContext(Context);
 
   if (loading) {
     return <h2>Loading...</h2>;
   }
 
-  if (questions[index] === undefined) {
+  if (questions[num] === undefined) {
     return (
       <button>
-        <Link to="/">START AGAIN</Link>
+        <Link to="/">START AGAIN un</Link>
       </button>
     );
   }
 
-  const { question, correct_answer, incorrect_answers } = questions[index];
-  let answers = randomizeAnswers(correct_answer, incorrect_answers);
-  answers = decode(answers);
-
-  console.log(answers);
+  const { question, correct_answer, incorrect_answers } = questions[num];
+  const answers = randomizeAnswers(correct_answer, incorrect_answers);
+  console.log(`num: ${num}`);
+  console.log(`question lenght: ${questions.length - 1}`);
 
   return (
-    <section className="quiz">
-      <p>{decode(question)}</p>
-      <div className="answers">
-        {answers.map((answer, index) => {
-          return (
-            <div className="answer" key={index}>
-              <label
-                htmlFor={index}
-                onClick={() => {
-                  setIndex((current) => current + 1);
+    <>
+      <section className="quiz">
+        <p>{decode(question)}</p>
+        <div className="answers">
+          {answers.map((answer, index) => {
+            return (
+              <div className="answer" key={index}>
+                <label
+                  htmlFor={index}
+                  onClick={() => {
+                    if (num === questions.length - 1) {
+                      setModal((current) => !current);
+                      console.log(modal);
+                    } else {
+                      setNum((current) => current + 1);
+                    }
 
-                  if (answer == correct_answer) {
-                    console.log("correct!");
-                    setCorrect((current) => current + 1);
-                  } else {
-                    console.log("wrong!");
-                  }
-                }}
-              >
-                {answer}
-              </label>
-              <input type="radio" value={answer} name={answer} id={index} />
-            </div>
-          );
-        })}
-      </div>
-      {index === questions.length ? (
-        <button>
-          <Link to="/">START AGAIN</Link>
-        </button>
-      ) : (
-        <button
-          onClick={() => {
-            setIndex((current) => current + 1);
-            console.log(index);
-          }}
-        >
-          NEXT
-        </button>
-      )}
-      <p>answers {`${correct} / ${questions.length}`}</p>
-    </section>
+                    console.log(`new num: ${num}`);
+
+                    if (answer == correct_answer) {
+                      console.log("correct!");
+                      setCorrect((current) => current + 1);
+                    } else {
+                      console.log("wrong!");
+                    }
+                  }}
+                >
+                  {decode(answer.toString())}
+                </label>
+                <input type="radio" value={answer} name={answer} id={index} />
+              </div>
+            );
+          })}
+        </div>
+
+        {modal === true
+          ? console.log(modal, " TRUE!")
+          : console.log(modal, " STILL FALSE!")}
+
+        {/*      {num === questions.length ? (
+          <button>
+            <Link to="/">START AGAIN</Link>
+          </button>
+        ) : (
+          <button
+            onClick={() => {
+              setNum((current) => current + 1);
+              console.log(num);
+            }}
+          >
+            NEXT
+          </button>
+        )} */}
+        {modal && <Modal correct={correct} questNum={questions.length} />}
+        <p>answers {`${correct} / ${questions.length}`}</p>
+      </section>
+    </>
   );
 };
 

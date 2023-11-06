@@ -15,7 +15,7 @@ const Form = () => {
     questions,
     data,
     url,
-    setIndex,
+    setNum,
   } = useContext(Context);
 
   return (
@@ -78,7 +78,7 @@ const Form = () => {
         <button
           onClick={(e) => {
             setQuestions(data.results);
-            setIndex(0);
+            setNum(0);
             console.log(questions);
           }}
         >
