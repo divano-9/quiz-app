@@ -1,15 +1,16 @@
 import { Link } from "react-router-dom";
+import Modal from "./modal/Modal";
 
-const Modal = (props) => {
+const QuizEnd = (props) => {
   return (
-    <div className="modal">
+    <Modal hasCloseBtn={false}>
       <h2>You've finnished the quiz!</h2>
       <p>Results: {`${props.correct}/${props.questNum}`}</p>
       <button>
         <Link to="/">Try Again</Link>
       </button>
-    </div>
+    </Modal>
   );
 };
 
-export default Modal;
+export default QuizEnd;

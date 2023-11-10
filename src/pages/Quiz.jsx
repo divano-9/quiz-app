@@ -3,7 +3,7 @@ import { Context } from "../states/GlobalContext";
 import { Link } from "react-router-dom";
 import { decode } from "html-entities";
 import randomizeAnswers from "../utils/randomizeAnswers";
-import Modal from "../components/Modal";
+import QuizEnd from "../components/QuizEnd";
 
 const Quiz = () => {
   const {
@@ -13,8 +13,8 @@ const Quiz = () => {
     loading,
     correct,
     setCorrect,
-    modal,
-    setModal,
+    modalOpen,
+    setModalOpen,
   } = useContext(Context);
 
   if (loading) {
@@ -46,7 +46,7 @@ const Quiz = () => {
                   htmlFor={index}
                   onClick={() => {
                     if (num === questions.length - 1) {
-                      setModal((current) => !current);
+                      setModalOpen((current) => !current);
                       console.log(modal);
                     } else {
                       setNum((current) => current + 1);
@@ -70,9 +70,9 @@ const Quiz = () => {
           })}
         </div>
 
-        {modal === true
-          ? console.log(modal, " TRUE!")
-          : console.log(modal, " STILL FALSE!")}
+        {modalOpen === true
+          ? console.log(" TRUE!")
+          : console.log(" STILL FALSE!")}
 
         {/*      {num === questions.length ? (
           <button>
@@ -88,7 +88,7 @@ const Quiz = () => {
             NEXT
           </button>
         )} */}
-        {modal && <Modal correct={correct} questNum={questions.length} />}
+        <QuizEnd correct={correct} questNum={questions.length} />
         <p>answers {`${correct} / ${questions.length}`}</p>
       </section>
     </>
