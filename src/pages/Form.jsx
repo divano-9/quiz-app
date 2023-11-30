@@ -1,50 +1,39 @@
 import { useContext } from "react";
 import { Context } from "../states/GlobalContext";
 import useFetch from "../hooks/useFetch";
-import { Link } from "react-router-dom";
 
 const Form = () => {
   const {
-    setCategory,
-    setDifficulty,
-    setAmount,
+    quiz,
+    setQuiz,
     setQuestions,
-    category,
-    difficulty,
-    amount,
     questions,
     data,
     url,
     setNum,
+    handleChange,
+    handleSubmit,
   } = useContext(Context);
 
   return (
     <>
       <form method="post">
-        <h1>FORM</h1>
-        <div>
+        <h1>Quizz App</h1>
+        <div className="custom-num">
           <label htmlFor="amount">Number of Questions</label>
           <input
+            className="numQ"
             name="amount"
             type="number"
+            value={quiz.amount}
             min="1"
             max="50"
-            defaultValue="10"
-            onChange={(e) => {
-              e.preventDefault();
-              setAmount(e.target.value);
-            }}
+            onChange={handleChange}
           />
         </div>
-        <div>
+        <div className="custom-select">
           <label htmlFor="category">Select Category</label>
-          <select
-            name="category"
-            onChange={(e) => {
-              e.preventDefault();
-              setCategory(e.target.value);
-            }}
-          >
+          <select name="category" value={quiz.category} onChange={handleChange}>
             <option value="">Random</option>
             <option value="9">General Knowlege</option>
             <option value="11">Movies</option>
@@ -59,14 +48,12 @@ const Form = () => {
             <option value="31">Anime and Manga</option>
           </select>
         </div>
-        <div>
+        <div className="custom-select">
           <label htmlFor="difficulty">Select Difficulty</label>
           <select
             name="difficulty"
-            onChange={(e) => {
-              e.preventDefault();
-              setDifficulty(e.target.value);
-            }}
+            value={quiz.difficulty}
+            onChange={handleChange}
           >
             <option value="">Random</option>
             <option value="easy">Easy</option>
@@ -75,19 +62,13 @@ const Form = () => {
           </select>
         </div>
 
-        <button
-          onClick={(e) => {
-            setQuestions(data.results);
-            setNum(0);
-            console.log(questions);
-          }}
-        >
-          <Link to="quiz">START!</Link>
+        <button className="start-btn btn" onClick={handleSubmit}>
+          DONE
         </button>
       </form>
       <button
+        className="btn"
         onClick={() => {
-          console.log(url);
           console.log(questions);
         }}
       >
