@@ -10,6 +10,7 @@ const GlobalContext = ({ children }) => {
   };
 
   const [questions, setQuestions] = useState([]);
+  const [answers, setAnswers] = useState([]);
   const [quiz, setQuiz] = useState({
     category: "",
     amount: 10,
@@ -20,7 +21,7 @@ const GlobalContext = ({ children }) => {
   const [modalOpen, setModalOpen] = useState(false);
   const [correctClass, setCorrectClass] = useState(false);
   const [wrongClass, setWrongClass] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [isSelecting, setIsSelecting] = useState(true);
 
@@ -75,6 +76,8 @@ const GlobalContext = ({ children }) => {
     handleSubmit,
     isSelecting,
     setIsSelecting,
+    answers,
+    setAnswers,
   }; // store the values that need to bee passed down to other components
   return <Context.Provider value={values}>{children}</Context.Provider>;
 };

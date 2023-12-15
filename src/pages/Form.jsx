@@ -16,7 +16,7 @@ const Form = () => {
   } = useContext(Context);
 
   return (
-    <>
+    <div className="quiz-select">
       <form method="post">
         <h1>Quizz App</h1>
         <div className="custom-num">
@@ -66,15 +66,7 @@ const Form = () => {
           DONE
         </button>
       </form>
-      <button
-        className="btn"
-        onClick={() => {
-          console.log(questions);
-        }}
-      >
-        CHECK
-      </button>
-    </>
+    </div>
   );
 };
 

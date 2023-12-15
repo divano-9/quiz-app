@@ -2,23 +2,46 @@
 @import url("https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,600;0,700;1,400&family=Roboto:wght@400;500;700&display=swap");
 
 /*GLOBAL*/
+
 body {
   font-family: "Montserrat", sans-serif;
+  min-height: 100vh;
+  margin: 0;
+}
+
+#root {
+  min-height: 100vh;
 }
 
 /*MODAL*/
 .modal {
   border: 1px black solid;
   padding: 10px;
+  width: 40%;
+  height: 40%;
 }
 
-/*FORM*/
-form {
+/*QUIZ-SELECT*/
+
+.quiz-select {
+  background-image: url("../assets/q-b-1.jpg");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+  min-height: 100vh;
   text-align: center;
-  margin-top: 50px;
 }
 
-form div {
+.quiz-select form {
+  text-align: center;
+  padding: 50px;
+  background: #f6fcfd;
+  display: inline-block;
+  margin-top: 50px;
+  box-shadow: rgba(124, 139, 139, 0.5) 0 2px 5px 0;
+}
+
+.quiz-select form div {
   margin: 0 auto;
   margin-bottom: 30px;
 }
@@ -137,9 +160,17 @@ select:hover,
 
 /*QUIZZ*/
 
+.quiz {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
 .quiz h2 {
   text-align: center;
-  margin-bottom: 70px;
+  margin-top: 150px;
+  margin-bottom: 100px;
+  color: #f7f6f6;
 }
 
 .quiz .answers {
@@ -148,7 +179,6 @@ select:hover,
 }
 
 .quiz .answer {
-  border: 1px solid #bdc4c5;
   display: inline-block;
   min-width: 400px;
   margin: 0 auto;
@@ -156,15 +186,16 @@ select:hover,
 }
 
 .quiz .answer label {
+  border: 2px solid #bdc4c5;
   text-align: center;
   display: block;
   padding: 20px 10px;
   cursor: pointer;
+  background-color: #fff;
 }
 
 .quiz .answer label:hover {
   background-color: #f7f6f6;
-  border-color: #a2a6a7;
   box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
 }
 
@@ -175,9 +206,105 @@ select:hover,
 /*correct and wrong answers*/
 
 .correct {
-  border: 2px solid rgb(133, 206, 25);
+  border-color: rgb(133, 206, 25) !important;
 }
 
 .wrong {
-  border: 2px solid rgb(187, 29, 29);
+  border-color: rgb(187, 29, 29) !important;
+}
+
+/*background*/
+
+.background {
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+}
+
+.background-9 {
+  background-image: linear-gradient(
+      rgba(58, 57, 57, 0.527),
+      rgba(54, 52, 52, 0.5)
+    ),
+    url("../assets/b-9.jpg");
+}
+
+.background-11 {
+  background-image: linear-gradient(
+      rgba(58, 57, 57, 0.527),
+      rgba(54, 52, 52, 0.5)
+    ),
+    url("../assets/b-11.jpg");
+}
+
+.background-12 {
+  background-image: linear-gradient(
+      rgba(58, 57, 57, 0.527),
+      rgba(54, 52, 52, 0.5)
+    ),
+    url("../assets/b-12.jpg");
+}
+
+.background-14 {
+  background-image: linear-gradient(
+      rgba(58, 57, 57, 0.527),
+      rgba(54, 52, 52, 0.5)
+    ),
+    url("../assets/b-14.jpg");
+}
+
+.background-15 {
+  background-image: linear-gradient(
+      rgba(58, 57, 57, 0.527),
+      rgba(54, 52, 52, 0.5)
+    ),
+    url("../assets/b-15.jpg");
+}
+
+.background-20 {
+  background-image: linear-gradient(
+      rgba(58, 57, 57, 0.527),
+      rgba(54, 52, 52, 0.5)
+    ),
+    url("../assets/b-20.jpg");
+}
+
+.background-21 {
+  background-image: linear-gradient(
+      rgba(58, 57, 57, 0.527),
+      rgba(54, 52, 52, 0.5)
+    ),
+    url("../assets/b-21.jpg");
+}
+
+.background-22 {
+  background-image: linear-gradient(
+      rgba(58, 57, 57, 0.527),
+      rgba(54, 52, 52, 0.5)
+    ),
+    url("../assets/b-22.jpg");
+}
+
+.background-23 {
+  background-image: linear-gradient(
+      rgba(58, 57, 57, 0.527),
+      rgba(54, 52, 52, 0.5)
+    ),
+    url("../assets/b-23.jpg");
+}
+
+.background-27 {
+  background-image: linear-gradient(
+      rgba(58, 57, 57, 0.527),
+      rgba(54, 52, 52, 0.5)
+    ),
+    url("../assets/b-27.jpg");
+}
+
+.background-31 {
+  background-image: linear-gradient(
+      rgba(58, 57, 57, 0.527),
+      rgba(54, 52, 52, 0.5)
+    ),
+    url("../assets/b-31.jpg");
 }

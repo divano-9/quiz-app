@@ -24,7 +24,7 @@ const Modal = ({ hasCloseBtn = true, children }) => {
   return (
     <dialog ref={modalRef} className="modal">
       {hasCloseBtn && (
-        <button className="close-modal-btn" onClick={handleCloseModal}>
+        <button className="close-modal-btn" onClick={() => handleCloseModal}>
           Close
         </button>
       )}

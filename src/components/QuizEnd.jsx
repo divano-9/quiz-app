@@ -10,7 +10,7 @@ const QuizEnd = (props) => {
       <p>Results: {`${props.correct}/${props.questNum}`}</p>
       <button
         onClick={() => {
-          setModalOpen((current) => !current);
+          setModalOpen(false);
           setCorrect(0);
           setIsSelecting(true);
         }}
