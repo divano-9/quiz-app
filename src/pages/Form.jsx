@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { Context } from "../states/GlobalContext";
-import useFetch from "../hooks/useFetch";
+import handleChange from "../utils/handlers/handleChange";
+import handleSubmit from "../utils/handlers/handleSubmit";
 
 const Form = () => {
   const {
@@ -11,8 +12,8 @@ const Form = () => {
     data,
     url,
     setNum,
-    handleChange,
-    handleSubmit,
+    useFetch,
+    setIsSelecting,
   } = useContext(Context);
 
   return (
@@ -28,12 +29,16 @@ const Form = () => {
             value={quiz.amount}
             min="1"
             max="50"
-            onChange={handleChange}
+            onChange={(e) => handleChange(e, quiz, setQuiz)}
           />
         </div>
         <div className="custom-select">
           <label htmlFor="category">Select Category</label>
-          <select name="category" value={quiz.category} onChange={handleChange}>
+          <select
+            name="category"
+            value={quiz.category}
+            onChange={(e) => handleChange(e, quiz, setQuiz)}
+          >
             <option value="">Random</option>
             <option value="9">General Knowlege</option>
             <option value="11">Movies</option>
@@ -53,7 +58,7 @@ const Form = () => {
           <select
             name="difficulty"
             value={quiz.difficulty}
-            onChange={handleChange}
+            onChange={(e) => handleChange(e, quiz, setQuiz)}
           >
             <option value="">Random</option>
             <option value="easy">Easy</option>
@@ -62,7 +67,12 @@ const Form = () => {
           </select>
         </div>
 
-        <button className="start-btn btn" onClick={handleSubmit}>
+        <button
+          className="start-btn btn"
+          onClick={(e) =>
+            handleSubmit(e, quiz, setNum, setIsSelecting, useFetch)
+          }
+        >
           DONE
         </button>
       </form>

@@ -13,14 +13,6 @@ body {
   min-height: 100vh;
 }
 
-/*MODAL*/
-.modal {
-  border: 1px black solid;
-  padding: 10px;
-  width: 40%;
-  height: 40%;
-}
-
 /*QUIZ-SELECT*/
 
 .quiz-select {
@@ -122,14 +114,10 @@ select:hover,
 
 /*buttons*/
 
-.btn a {
-  text-decoration: none;
-  color: #0f1111;
-}
-
 .btn {
   background-color: #fff;
   border: 1px solid #cbcccc;
+  color: #0f1111;
   border-radius: 8px;
   box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
   box-sizing: border-box;
@@ -213,12 +201,40 @@ select:hover,
   border-color: rgb(187, 29, 29) !important;
 }
 
+/*MODAL*/
+.modal {
+  border: 1px black solid;
+  padding: 10px;
+  width: 30%;
+  height: 60%;
+  text-align: center;
+  background: #f6fcfd;
+  box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+}
+
+.modal h2,
+.modal p,
+.modal button {
+  color: #0f1111;
+}
+
+.modal button {
+  width: 150px;
+  height: 50px;
+  font-size: 1rem;
+}
+
 /*background*/
 
 .background {
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
+  background-image: linear-gradient(
+      rgba(58, 57, 57, 0.527),
+      rgba(54, 52, 52, 0.5)
+    ),
+    url("../assets/q-b-1.jpg");
 }
 
 .background-9 {
@@ -307,4 +323,13 @@ select:hover,
       rgba(54, 52, 52, 0.5)
     ),
     url("../assets/b-31.jpg");
+}
+
+/*SPINNER*/
+
+.spinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
 }

@@ -16,16 +16,14 @@ const GlobalContext = ({ children }) => {
     amount: 10,
     difficulty: "",
   });
-  const [num, setNum] = useState(0);
-  const [correct, setCorrect] = useState(0);
+  const [num, setNum] = useState(0); // question number (question[index])
+  const [correct, setCorrect] = useState(0); // number of correct answers clicked
   const [modalOpen, setModalOpen] = useState(false);
   const [correctClass, setCorrectClass] = useState(false);
   const [wrongClass, setWrongClass] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
-  const [isSelecting, setIsSelecting] = useState(true);
-
-  const baseUrl = "https://opentdb.com/api.php?";
+  const [isSelecting, setIsSelecting] = useState(true); // is user still choosing/in form component
 
   const useFetch = (url) => {
     axios
@@ -39,21 +37,6 @@ const GlobalContext = ({ children }) => {
       .finally(() => {
         setLoading(false); // after success or error set loading to false
       });
-  };
-
-  const handleChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setQuiz({ ...quiz, [name]: value });
-  };
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    const { category, amount, difficulty } = quiz;
-    const url = `${baseUrl}amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`;
-    useFetch(url);
-    setNum(0);
-    setIsSelecting(false);
   };
 
   const values = {
@@ -72,12 +55,11 @@ const GlobalContext = ({ children }) => {
     setCorrectClass,
     wrongClass,
     setWrongClass,
-    handleChange,
-    handleSubmit,
     isSelecting,
     setIsSelecting,
     answers,
     setAnswers,
+    useFetch,
   }; // store the values that need to bee passed down to other components
   return <Context.Provider value={values}>{children}</Context.Provider>;
 };

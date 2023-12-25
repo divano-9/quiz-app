@@ -1,8 +1,10 @@
 import { useContext, useEffect } from "react";
 import { Context } from "../states/GlobalContext";
-import { decode } from "html-entities";
+import { decode } from "html-entities"; /* plugin for replacing entities with text */
 import randomizeAnswers from "../utils/randomizeAnswers";
 import QuizEnd from "../components/QuizEnd";
+import handleClick from "../utils/handlers/handleClick";
+import MoonLoader from "react-spinners/MoonLoader";
 
 const Quiz = () => {
   const {
@@ -23,72 +25,50 @@ const Quiz = () => {
   } = useContext(Context);
 
   if (loading) {
-    return <h2>Loading...</h2>;
+    return (
+      <div className="spinner">
+        <div>
+          <MoonLoader color="#36d7b7" />
+        </div>
+      </div>
+    );
   }
 
   const { question, correct_answer, incorrect_answers } = questions[num];
 
   const answers = randomizeAnswers(correct_answer, incorrect_answers);
 
-  console.log(`num: ${num}`);
-  console.log(`question lenght: ${questions.length - 1}`);
-
   return (
-    <>
-      <section className={`quiz background background-${quiz.category}`}>
-        <h2>{decode(question)}</h2>
-        <div className="answers">
-          {answers.map((answer, index) => {
-            return (
-              <div className="answer" key={index}>
-                <label
-                  htmlFor={index}
-                  onClick={(e) => {
-                    e.preventDefault();
-                    console.log(e.target.className);
-                    if (answer == correct_answer) {
-                      console.log("correct!");
-                      setCorrect((current) => current + 1);
-                      if (num === questions.length - 1) {
-                        setModalOpen(true);
-                      } else {
-                        e.target.classList.toggle("correct");
-
-                        setTimeout(() => {
-                          e.target.classList.toggle("correct");
-                        }, 800);
-                        setTimeout(() => {
-                          setNum((current) => current + 1);
-                        }, 2000);
-                      }
-                    } else {
-                      console.log("wrong!");
-                      if (num === questions.length - 1) {
-                        setModalOpen(true);
-                      } else {
-                        e.target.classList.add("wrong");
-
-                        setTimeout(() => {
-                          e.target.classList.toggle("wrong");
-                        }, 800);
-                        setTimeout(() => {
-                          setNum((current) => current + 1);
-                        }, 2000);
-                      }
-                    }
-                  }}
-                >
-                  {decode(answer.toString())}
-                </label>
-                <input type="radio" value={answer} name={answer} id={index} />
-              </div>
-            );
-          })}
-        </div>
-        <QuizEnd correct={correct} questNum={questions.length} />
-        <p>answers {`${correct} / ${questions.length}`}</p>
-      </section>
-    </>
+    <section className={`quiz background background-${quiz.category}`}>
+      <h2>{decode(question)}</h2>
+      <div className="answers">
+        {answers.map((answer, index) => {
+          return (
+            <div className="answer" key={index}>
+              <label
+                htmlFor={index}
+                onClick={(e) =>
+                  handleClick(
+                    e,
+                    answer,
+                    correct_answer,
+                    questions,
+                    setCorrect,
+                    setNum,
+                    num,
+                    setModalOpen
+                  )
+                }
+              >
+                {decode(answer.toString())}
+              </label>
+              <input type="radio" value={answer} name={answer} id={index} />
+            </div>
+          );
+        })}
+      </div>
+      <QuizEnd correct={correct} questNum={questions.length} /> {/* modal */}
+    </section>
   );
 };
 

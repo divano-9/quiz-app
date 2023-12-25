@@ -13,6 +13,7 @@ const Modal = ({ hasCloseBtn = true, children }) => {
     const modalElement = modalRef.current;
 
     if (modalElement) {
+      // if modalOpen state is true - showModal(),if its false close()
       if (modalOpen) {
         modalElement.showModal();
       } else {
@@ -23,7 +24,8 @@ const Modal = ({ hasCloseBtn = true, children }) => {
 
   return (
     <dialog ref={modalRef} className="modal">
-      {hasCloseBtn && (
+      {/* if showModal() - modal is visible, if close() modal is invisible */}
+      {hasCloseBtn && ( //close modal button
         <button className="close-modal-btn" onClick={() => handleCloseModal}>
           Close
         </button>
