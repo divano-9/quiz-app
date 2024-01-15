@@ -3,20 +3,20 @@ import Modal from "./modal/Modal";
 import { Context } from "../states/GlobalContext";
 
 const QuizEnd = (props) => {
-  const { setCorrect, setModalOpen, setIsSelecting } = useContext(Context);
+  const { setModalOpen, setIsSelecting, tacno } = useContext(Context);
   return (
     <Modal hasCloseBtn={false}>
       {/* no modal close btn */}
       <h2>You've finnished the quiz!</h2>
       <p>
         Your Results:{" "}
-        {`${props.correct} correct out of ${props.questNum} questions`}
+        {`${tacno.current} correct out of ${props.questNum} questions`}
       </p>
       <button
         className="btn"
         onClick={() => {
           setModalOpen(false);
-          setCorrect(0);
+          tacno.current = 0;
           setIsSelecting(true);
         }}
       >

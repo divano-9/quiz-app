@@ -3,15 +3,16 @@ const handleClick = (
   answer,
   correct_answer,
   questions,
-  setCorrect,
   setNum,
   num,
-  setModalOpen
+  setModalOpen,
+  tacno
 ) => {
   e.preventDefault();
   if (answer == correct_answer) {
     console.log("correct!");
-    setCorrect((current) => current + 1); // add +1 to number of correct answers
+    // setCorrect((current) => current + 1); // add +1 to number of correct answers
+    tacno.current = tacno.current + 1;
     if (num === questions.length - 1) {
       // if finished with all of the questions open modal
       setModalOpen(true);
@@ -23,7 +24,7 @@ const handleClick = (
       }, 800);
       setTimeout(() => {
         setNum((current) => current + 1); // after adding correct class, go to next question
-      }, 2000);
+      }, 1800);
     }
   } else {
     // same functions as correct
@@ -38,7 +39,7 @@ const handleClick = (
       }, 800);
       setTimeout(() => {
         setNum((current) => current + 1);
-      }, 2000);
+      }, 1800);
     }
   }
 };

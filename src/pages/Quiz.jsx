@@ -12,16 +12,11 @@ const Quiz = () => {
     num,
     setNum,
     loading,
-    correct,
-    setCorrect,
     modalOpen,
     setModalOpen,
-    correctClass,
-    setCorrectClass,
-    wrongClass,
-    setWrongClass,
     setIsSelecting,
     quiz,
+    tacno,
   } = useContext(Context);
 
   if (loading) {
@@ -40,7 +35,7 @@ const Quiz = () => {
 
   return (
     <section className={`quiz background background-${quiz.category}`}>
-      <h2>{decode(question)}</h2>
+      <h1>{decode(question)}</h1>
       <div className="answers">
         {answers.map((answer, index) => {
           return (
@@ -53,10 +48,10 @@ const Quiz = () => {
                     answer,
                     correct_answer,
                     questions,
-                    setCorrect,
                     setNum,
                     num,
-                    setModalOpen
+                    setModalOpen,
+                    tacno
                   )
                 }
               >
@@ -67,7 +62,7 @@ const Quiz = () => {
           );
         })}
       </div>
-      <QuizEnd correct={correct} questNum={questions.length} /> {/* modal */}
+      <QuizEnd questNum={questions.length} /> {/* modal */}
     </section>
   );
 };

@@ -13,6 +13,10 @@ body {
   min-height: 100vh;
 }
 
+h1 {
+  font-size: 14pt;
+}
+
 /*QUIZ-SELECT*/
 
 .quiz-select {
@@ -25,11 +29,8 @@ body {
 }
 
 .quiz-select form {
-  text-align: center;
   padding: 50px;
   background: #f6fcfd;
-  display: inline-block;
-  margin-top: 50px;
   box-shadow: rgba(124, 139, 139, 0.5) 0 2px 5px 0;
 }
 
@@ -50,17 +51,11 @@ input[type="number"]::-webkit-outer-spin-button {
 
 /* Firefox */
 
-.custom-select {
-  width: 350px;
-  position: relative;
-}
-
+.custom-select,
 .custom-num {
-  width: 350px;
-}
-
-.custom-num input {
-  width: 320px;
+  /* width: 350px; */
+  width: 85%;
+  position: relative;
 }
 
 select,
@@ -78,6 +73,7 @@ select,
   color: #0f1111;
   cursor: pointer;
   box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
+  box-sizing: border-box;
 }
 
 .numQ {
@@ -154,11 +150,12 @@ select:hover,
   flex-direction: column;
 }
 
-.quiz h2 {
+.quiz h1 {
   text-align: center;
-  margin-top: 150px;
-  margin-bottom: 100px;
+  margin-top: 50px;
+  margin-bottom: 75px;
   color: #f7f6f6;
+  padding: 0 5px;
 }
 
 .quiz .answers {
@@ -168,7 +165,7 @@ select:hover,
 
 .quiz .answer {
   display: inline-block;
-  min-width: 400px;
+  width: 80%;
   margin: 0 auto;
   margin-bottom: 20px;
 }
@@ -205,8 +202,8 @@ select:hover,
 .modal {
   border: 1px black solid;
   padding: 10px;
-  width: 30%;
-  height: 60%;
+  width: 70%;
+  height: 300px;
   text-align: center;
   background: #f6fcfd;
   box-shadow: rgba(213, 217, 217, 0.5) 0 2px 5px 0;
@@ -218,9 +215,13 @@ select:hover,
   color: #0f1111;
 }
 
+.modal h2 {
+  margin-bottom: 20%;
+}
+
 .modal button {
-  width: 150px;
-  height: 50px;
+  width: 120px;
+  height: 40px;
   font-size: 1rem;
 }
 
@@ -228,7 +229,7 @@ select:hover,
 
 .background {
   background-repeat: no-repeat;
-  background-position: center;
+  background-position: right;
   background-size: cover;
   background-image: linear-gradient(
       rgba(58, 57, 57, 0.527),
@@ -262,6 +263,7 @@ select:hover,
 }
 
 .background-14 {
+  background-position: center;
   background-image: linear-gradient(
       rgba(58, 57, 57, 0.527),
       rgba(54, 52, 52, 0.5)
@@ -278,6 +280,7 @@ select:hover,
 }
 
 .background-20 {
+  background-position: center;
   background-image: linear-gradient(
       rgba(58, 57, 57, 0.527),
       rgba(54, 52, 52, 0.5)
@@ -286,6 +289,7 @@ select:hover,
 }
 
 .background-21 {
+  background-position: left;
   background-image: linear-gradient(
       rgba(58, 57, 57, 0.527),
       rgba(54, 52, 52, 0.5)

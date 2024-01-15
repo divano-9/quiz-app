@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useRef } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 
@@ -19,11 +19,11 @@ const GlobalContext = ({ children }) => {
   const [num, setNum] = useState(0); // question number (question[index])
   const [correct, setCorrect] = useState(0); // number of correct answers clicked
   const [modalOpen, setModalOpen] = useState(false);
-  const [correctClass, setCorrectClass] = useState(false);
-  const [wrongClass, setWrongClass] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [isSelecting, setIsSelecting] = useState(true); // is user still choosing/in form component
+
+  const tacno = useRef(0);
 
   const useFetch = (url) => {
     axios
@@ -51,15 +51,12 @@ const GlobalContext = ({ children }) => {
     setCorrect,
     modalOpen,
     setModalOpen,
-    correctClass,
-    setCorrectClass,
-    wrongClass,
-    setWrongClass,
     isSelecting,
     setIsSelecting,
     answers,
     setAnswers,
     useFetch,
+    tacno,
   }; // store the values that need to bee passed down to other components
   return <Context.Provider value={values}>{children}</Context.Provider>;
 };
