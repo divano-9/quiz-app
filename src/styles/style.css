@@ -171,7 +171,7 @@ select:hover,
 }
 
 .quiz .answer label {
-  border: 2px solid #bdc4c5;
+  border: 3px solid #bdc4c5;
   text-align: center;
   display: block;
   padding: 20px 10px;

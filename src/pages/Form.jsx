@@ -4,17 +4,8 @@ import handleChange from "../utils/handlers/handleChange";
 import handleSubmit from "../utils/handlers/handleSubmit";
 
 const Form = () => {
-  const {
-    quiz,
-    setQuiz,
-    setQuestions,
-    questions,
-    data,
-    url,
-    setNum,
-    useFetch,
-    setIsSelecting,
-  } = useContext(Context);
+  const { quiz, setQuiz, setNum, useFetch, setIsSelecting } =
+    useContext(Context);
 
   return (
     <div className="quiz-select">

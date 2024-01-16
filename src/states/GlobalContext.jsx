@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect, useRef } from "react";
+import { createContext, useState, useRef } from "react";
 import axios from "axios";
 import PropTypes from "prop-types";
 
@@ -32,7 +32,7 @@ const GlobalContext = ({ children }) => {
         setQuestions(response.data.results); // if fetching is successful set data state to api's respone data
       })
       .catch((error) => {
-        setError(error); // if there is an error set it in error state
+        setError(true); // if there is an error set it in error state
       })
       .finally(() => {
         setLoading(false); // after success or error set loading to false
@@ -57,6 +57,7 @@ const GlobalContext = ({ children }) => {
     setAnswers,
     useFetch,
     tacno,
+    error,
   }; // store the values that need to bee passed down to other components
   return <Context.Provider value={values}>{children}</Context.Provider>;
 };

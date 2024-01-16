@@ -1,4 +1,4 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { Context } from "../states/GlobalContext";
 import { decode } from "html-entities"; /* plugin for replacing entities with text */
 import randomizeAnswers from "../utils/randomizeAnswers";
@@ -7,17 +7,8 @@ import handleClick from "../utils/handlers/handleClick";
 import MoonLoader from "react-spinners/MoonLoader";
 
 const Quiz = () => {
-  const {
-    questions,
-    num,
-    setNum,
-    loading,
-    modalOpen,
-    setModalOpen,
-    setIsSelecting,
-    quiz,
-    tacno,
-  } = useContext(Context);
+  const { questions, num, setNum, loading, setModalOpen, quiz, tacno } =
+    useContext(Context);
 
   if (loading) {
     return (
@@ -51,7 +42,7 @@ const Quiz = () => {
                     setNum,
                     num,
                     setModalOpen,
-                    tacno
+                    tacno,
                   )
                 }
               >

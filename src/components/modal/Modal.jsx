@@ -1,7 +1,13 @@
 import { useContext, useRef, useEffect } from "react";
 import { Context } from "../../states/GlobalContext";
+import PropTypes from "prop-types";
 
 const Modal = ({ hasCloseBtn = true, children }) => {
+  Modal.propTypes = {
+    hasCloseBtn: PropTypes.bool,
+    children: PropTypes.object,
+  };
+
   const { modalOpen, setModalOpen } = useContext(Context);
   const modalRef = useRef(null);
 

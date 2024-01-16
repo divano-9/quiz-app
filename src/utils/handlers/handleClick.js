@@ -6,7 +6,7 @@ const handleClick = (
   setNum,
   num,
   setModalOpen,
-  tacno
+  tacno,
 ) => {
   e.preventDefault();
   if (answer == correct_answer) {

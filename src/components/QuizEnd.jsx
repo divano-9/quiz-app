@@ -1,13 +1,18 @@
 import { useContext } from "react";
 import Modal from "./modal/Modal";
 import { Context } from "../states/GlobalContext";
+import PropTypes from "prop-types";
 
 const QuizEnd = (props) => {
+  QuizEnd.propTypes = {
+    questNum: PropTypes.object,
+  };
+
   const { setModalOpen, setIsSelecting, tacno } = useContext(Context);
   return (
     <Modal hasCloseBtn={false}>
       {/* no modal close btn */}
-      <h2>You've finnished the quiz!</h2>
+      <h2>You &apos ve finnished the quiz!</h2>
       <p>
         Your Results:{" "}
         {`${tacno.current} correct out of ${props.questNum} questions`}
