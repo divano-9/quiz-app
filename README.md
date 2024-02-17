@@ -5,7 +5,7 @@ QUIZ LINK
 </a>
 
 <br>
-This is a quizz app I've done for practice. Api used: <a href="https://opentdb.com">opentdb.com</a><br>
+This is a quizz app I've done for practice. API used: <a href="https://opentdb.com">opentdb.com</a><br>
 Languages used in making of the app:
 
 <br>
